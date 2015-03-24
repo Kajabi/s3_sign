@@ -8,7 +8,7 @@ module S3Sign
   class << self
     attr_writer :bucket_name
     def bucket_name
-      @bucket_name or "No S3Sign.bucket_name is set"
+      @bucket_name or raise "No S3Sign.bucket_name is set"
     end
   end
 

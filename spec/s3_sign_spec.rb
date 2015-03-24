@@ -10,6 +10,13 @@ describe S3Sign, '.url' do
     S3Sign.bucket_name = "spec_bucket"
   end
 
+  it "raises a runtime error if the bucket_name is not set" do
+    S3Sign.bucket_name = nil
+    expect(lambda {
+      S3Sign.url("foo.png")
+    }).to raise_error(RuntimeError, "No S3Sign.bucket_name is set")
+  end
+
   it "signs a given url for the bucket name with expiration and signature" do
     bucket = S3Sign.bucket_name
     access_key = "spec_access_key_id"
