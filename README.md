@@ -1,8 +1,7 @@
 # S3Sign
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/s3_sign`. To experiment with that code, run `bin/console` for an interactive prompt.
+S3Sign allows easy signing of already formatted s3 urls.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -22,13 +21,43 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Initialize the `bucket_name` for for `S3Sign`.  In rails for instance,
+you might add an initializer for this.
 
-## Development
+### Setup
+```ruby
+S3Sign.bucket_name = "super_s3_bucket"
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+The gem assumes you already have AWS (via aws-sdk) configured globally,
+something like this:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+AWS.config(
+  :access_key_id     => AppConfig.aws.access_key,
+  :secret_access_key => AppConfig.aws.secret_key
+)
+```
+
+### API
+
+The `S3Sign` module itself provides `.url`:
+
+```ruby
+# Pass a full s3 url and 1 hour expiration
+S3Sign.url "http://s3.amazonaws.com/bucket/foo.png", 3600
+
+# Pass a 'key' portion found under the bucket with default expiration
+S3Sign.url "images/foo.png"
+```
+
+The gem also provides a `S3Sign::Helper` module, useful to mixin to rails
+controllers.  It will add two helper methods to your controllers and views.
+
+`s3_signed_url_for_key` - Takes a key/url and optional expires
+
+`stable_s3_signed_url` - Takes a url and optional reference time.  Used for
+generting signatures that expire in the far future year 2036.
 
 ## Contributing
 
