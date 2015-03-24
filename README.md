@@ -46,6 +46,7 @@ The `S3Sign` module itself provides `.url`:
 ```ruby
 # Pass a full s3 url and 1 hour expiration
 S3Sign.url "http://s3.amazonaws.com/bucket/foo.png", 3600
+# => https://bucket.s3.amazonaws.com/https%3A//s3.amazonaws.com/bucket/foo.png?AWSAccessKeyId=access_key_id&Expires=1427243648&Signature=j11N91yjHBY5LaSpEsC%2FrrYadiY%3D
 
 # Pass a 'key' portion found under the bucket with default expiration
 S3Sign.url "images/foo.png"
