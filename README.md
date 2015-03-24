@@ -58,7 +58,7 @@ controllers.  It will add two helper methods to your controllers and views.
 `s3_signed_url_for_key` - Takes a key/url and optional expires
 
 `stable_s3_signed_url` - Takes a url and optional reference time.  Used for
-generting signatures that expire in the far future year 2036.
+generating signatures that expire in the far future year 2036.
 
 ## Contributing
 
