@@ -45,7 +45,7 @@ The `S3Sign` module itself provides `.url`:
 
 ```ruby
 # Pass a full s3 url and 1 hour expiration
-S3Sign.url "http://s3.amazonaws.com/bucket/foo.png", 3600
+S3Sign.url "http://s3.amazonaws.com/bucket/foo.png", expires: 3600
 # => "https://bucket.s3.amazonaws.com/foo.png?AWSAccessKeyId=access_key_id&Expires=1427243780&Signature=a3RzDgElxDpSZLgxurZLiw1a6Ny%3D"
 
 # Pass a 'key' portion found under the bucket with default expiration
@@ -55,9 +55,9 @@ S3Sign.url "images/foo.png"
 The gem also provides a `S3Sign::Helper` module, useful to mixin to rails
 controllers.  It will add two helper methods to your controllers and views.
 
-`s3_signed_url_for_key` - Takes a key/url and optional expires
+`s3_signed_url_for_key` - Takes a key/url and options
 
-`stable_s3_signed_url` - Takes a url and optional reference time.  Used for
+`stable_s3_signed_url` - Takes a url and options.  Used for
 generating signatures that expire in the far future year 2036.
 
 ## Contributing
