@@ -9,7 +9,7 @@ describe S3Sign::Helper do
       expect(s3_signed_url_for_key("test.txt")).to eq(:url_one)
 
       expect(S3Sign).to receive(:url).with("test.pdf", expires: 3600).and_return(:url_two)
-      expect(s3_signed_url_for_key("test.pdf", 3600)).to eq(:url_two)
+      expect(s3_signed_url_for_key("test.pdf", expires: 3600)).to eq(:url_two)
     end
   end
 
@@ -21,7 +21,7 @@ describe S3Sign::Helper do
 
     it "signs for a given time in 2036 if given a reference time" do
       expect(S3Sign).to receive(:url).with("test.txt", expires: Time.parse("2036-03-24 21:47:30 UTC")).and_return(:url)
-      expect(stable_s3_signed_url("test.txt", Time.parse("2015-03-24 21:47:30 UTC"))).to eq(:url)
+      expect(stable_s3_signed_url("test.txt", expires: Time.parse("2015-03-24 21:47:30 UTC"))).to eq(:url)
     end
   end
 end

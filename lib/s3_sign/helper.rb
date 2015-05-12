@@ -14,8 +14,9 @@ module S3Sign
 
     # A pure "time from now" signed s3 asset url.  Good for non-visual elements
     # like attachments, and not thumbnails, that don't have the same caching concerns
-    def s3_signed_url_for_key(key, expires_in = 86_400)
-      S3Sign.url key, expires: expires_in
+    def s3_signed_url_for_key(key, options = {})
+      options[:expires] ||= 86_400
+      S3Sign.url key, options
     end
 
     # Uses a far-future date so that the expires and signature on
@@ -33,10 +34,10 @@ module S3Sign
     # far future stable year.  This is useful to cache-bust the url from
     # an updated_at timestamp where some browsers/proxies may try to use
     # the cached asset even though it was updated.
-    def stable_s3_signed_url(url, reference_time = nil)
+    def stable_s3_signed_url(url, options = {})
       @stable_s3_expire_at ||= Time.parse("2036-1-1 00:00:00 UTC")
 
-      if reference_time
+      if reference_time = options.delete(:expires)
         # The time given but in the year 2036
         year       = @stable_s3_expire_at.year
         expires_at = Time.parse(reference_time.utc.strftime("#{year}-%m-%d %T UTC"))
@@ -44,7 +45,7 @@ module S3Sign
         expires_at = @stable_s3_expire_at
       end
 
-      s3_signed_url_for_key(url, expires_at)
+      s3_signed_url_for_key(url, expires: expires_at)
     end
   end
 end
