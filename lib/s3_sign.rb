@@ -25,10 +25,10 @@ module S3Sign
 
   def self.build_options(options)
     { expires: options.fetch(:expires, SEVEN_DAYS) }.tap do |o|
-      attachment_name = options[:attachment_name]
+      attachment_filename = options[:attachment_filename]
 
-      if attachment_name
-        o[:response_content_disposition] = "attachment; filename=#{attachment_name}"
+      if attachment_filename
+        o[:response_content_disposition] = "attachment; filename=#{attachment_filename}"
       end
     end
   end
