@@ -12,16 +12,26 @@ module S3Sign
     end
   end
 
-  def self.url(s3_url, expires = SEVEN_DAYS)
+  def self.url(s3_url, options = {})
     s3 = AWS::S3.new
     bucket = s3.buckets[bucket_name]
 
     path = path_from_s3_url(s3_url)
 
-    AWS::S3::S3Object.new(bucket, path).url_for(:read, expires: expires).to_s
+    AWS::S3::S3Object.new(bucket, path).url_for(:read, build_options(options)).to_s
   end
 
   protected
+
+  def self.build_options(options)
+    { expires: options.fetch(:expires, SEVEN_DAYS) }.tap do |o|
+      attachment_filename = options[:attachment_filename]
+
+      if attachment_filename
+        o[:response_content_disposition] = "attachment; filename=#{attachment_filename}"
+      end
+    end
+  end
 
   def self.path_from_s3_url(s3_url)
     s3_url.sub(%r{^.+?/#{bucket_name}/}, '')
