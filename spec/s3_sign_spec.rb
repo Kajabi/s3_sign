@@ -25,4 +25,23 @@ describe S3Sign, '.url' do
     signed = S3Sign.url(url)
     expect(signed).to match(%r{^https://s3.amazonaws.com/#{bucket}/accounts/2/products/photo.jpg\?AWSAccessKeyId=#{access_key}&Expires=\d+&Signature=.+%3D$})
   end
+
+  it "can receive an optional expires value" do
+    bucket = S3Sign.bucket_name
+    access_key = "spec_access_key_id"
+
+    url = "https://s3.amazonaws.com/#{bucket}/accounts/2/products/photo.jpg"
+    signed = S3Sign.url(url, expires: 42)
+    expires_timestamp = (Time.now + 42).to_i
+    expect(signed).to match(%r{^https://s3.amazonaws.com/#{bucket}/accounts/2/products/photo.jpg\?AWSAccessKeyId=#{access_key}&Expires=#{expires_timestamp}&Signature=.+%3D$})
+  end
+
+  it "will add response_content_type for the given attachment_name if present" do
+    bucket = S3Sign.bucket_name
+    access_key = "spec_access_key_id"
+
+    url = "https://s3.amazonaws.com/#{bucket}/accounts/2/products/1234.jpg"
+    signed = S3Sign.url(url, attachment_name: "photo.jpg")
+    expect(signed).to match(%r{^https://s3.amazonaws.com/#{bucket}/accounts/2/products/1234.jpg\?.*response-content-disposition=attachment%3B%20filename%3Dphoto.jpg})
+  end
 end

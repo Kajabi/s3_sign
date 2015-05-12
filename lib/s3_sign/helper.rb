@@ -15,7 +15,7 @@ module S3Sign
     # A pure "time from now" signed s3 asset url.  Good for non-visual elements
     # like attachments, and not thumbnails, that don't have the same caching concerns
     def s3_signed_url_for_key(key, expires_in = 86_400)
-      S3Sign.url key, expires_in
+      S3Sign.url key, expires: expires_in
     end
 
     # Uses a far-future date so that the expires and signature on
