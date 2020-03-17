@@ -23,7 +23,7 @@ module S3Sign
   protected
 
   def self.build_options(options)
-    { expires_in: options.fetch(:expires, SEVEN_DAYS) }.tap do |o|
+    { expires_in: options.fetch(:expires, SEVEN_DAYS).to_i }.tap do |o|
       attachment_filename = options[:attachment_filename]
 
       if attachment_filename
