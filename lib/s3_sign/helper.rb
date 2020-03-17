@@ -1,3 +1,5 @@
+require "time"
+
 module S3Sign
   module Helper
     def self.included(base)
