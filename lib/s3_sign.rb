@@ -1,6 +1,6 @@
 require "s3_sign/version"
 require "s3_sign/helper"
-require "aws"
+require "aws-sdk-s3"
 
 module S3Sign
   SEVEN_DAYS = 60 * 60 * 24 * 7
@@ -13,18 +13,17 @@ module S3Sign
   end
 
   def self.url(s3_url, options = {})
-    s3 = AWS::S3.new
-    bucket = s3.buckets[bucket_name]
-
+    s3 = Aws::S3::Resource.new
+    bucket = s3.bucket(bucket_name)
     path = path_from_s3_url(s3_url)
-
-    AWS::S3::S3Object.new(bucket, path).url_for(:read, build_options(options)).to_s
+    obj = bucket.object(path)
+    obj.presigned_url(:get, **build_options(options))
   end
 
   protected
 
   def self.build_options(options)
-    { expires: options.fetch(:expires, SEVEN_DAYS) }.tap do |o|
+    { expires_in: options.fetch(:expires, SEVEN_DAYS).to_i }.tap do |o|
       attachment_filename = options[:attachment_filename]
 
       if attachment_filename

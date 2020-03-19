@@ -2,10 +2,7 @@ require "spec_helper"
 
 describe S3Sign, '.url' do
   before do
-    AWS.config(
-      :access_key_id     => "spec_access_key_id",
-      :secret_access_key => "spec_secret_access_key"
-    )
+    Aws.config.update(credentials: Aws::Credentials.new("spec_access_key_id", "spec_secret_access_key"))
 
     S3Sign.bucket_name = "spec_bucket"
   end
@@ -23,7 +20,7 @@ describe S3Sign, '.url' do
 
     url = "https://s3.amazonaws.com/#{bucket}/accounts/2/products/photo.jpg"
     signed = S3Sign.url(url)
-    expect(signed).to match(%r{^https://s3.amazonaws.com/#{bucket}/accounts/2/products/photo.jpg\?AWSAccessKeyId=#{access_key}&Expires=\d+&Signature=.+%3D$})
+    expect(signed).to match(%r{^https://s3.amazonaws.com/#{bucket}/accounts/2/products/photo.jpg\?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=#{access_key}%2F\d+%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=\w+&X-Amz-Expires=\d+&X-Amz-SignedHeaders=host&X-Amz-Signature=\w+$})
   end
 
   it "can receive an optional expires value" do
@@ -32,8 +29,7 @@ describe S3Sign, '.url' do
 
     url = "https://s3.amazonaws.com/#{bucket}/accounts/2/products/photo.jpg"
     signed = S3Sign.url(url, expires: 42)
-    expires_timestamp = (Time.now + 42).to_i
-    expect(signed).to match(%r{^https://s3.amazonaws.com/#{bucket}/accounts/2/products/photo.jpg\?AWSAccessKeyId=#{access_key}&Expires=#{expires_timestamp}&Signature=.+%3D$})
+    expect(signed).to match(%r{^https://s3.amazonaws.com/#{bucket}/accounts/2/products/photo.jpg\?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=#{access_key}%2F\d+%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=\w+&X-Amz-Expires=42&X-Amz-SignedHeaders=host&X-Amz-Signature=\w+$})
   end
 
   it "will add response_content_type for the given attachment_filename if present" do
