@@ -29,14 +29,13 @@ you might add an initializer for this.
 S3Sign.bucket_name = "super_s3_bucket"
 ```
 
-The gem assumes you already have AWS (via aws-sdk) configured globally,
+The gem assumes you already have AWS (via aws-sdk) [configured globally](https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/setup-config.html),
 something like this:
 
 ```ruby
-AWS.config(
-  :access_key_id     => AppConfig.aws.access_key,
-  :secret_access_key => AppConfig.aws.secret_key
-)
+Aws.config.update({
+  credentials: Aws::Credentials.new(AppConfig.aws.access_key, AppConfig.aws.secret_key)
+})
 ```
 
 ### API
@@ -62,7 +61,7 @@ generating signatures that expire in the far future year 2036.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/s3_sign/fork )
+1. Fork it ( https://github.com/Kajabi/s3_sign/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
