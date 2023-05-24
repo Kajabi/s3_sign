@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: s3-sign
+  description: |
+    S3Sign allows easy signing of already formatted s3 urls.
+  annotations:
+    backstage.io/source-location: url:https://github.com/Kajabi/s3_sign/tree/main/
+    github.com/project-slug: Kajabi/s3_sign
+spec:
+  system: kajabi-products
+  type: gem
+  owner: standard-model
+  lifecycle: production
