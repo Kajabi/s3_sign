@@ -26,5 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "rubocop-rake"
   spec.add_development_dependency "rubocop-rspec"
+  spec.add_development_dependency "nokogiri"
   spec.metadata["rubygems_mfa_required"] = "true"
 end
