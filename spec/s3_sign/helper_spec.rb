@@ -7,19 +7,21 @@ describe S3Sign::Helper do
 
   before do
     s3 = Aws::S3::Client.new(stub_responses: true)
-    s3.stub_responses(:presign_url, ->(context) { { url: "https://example.com/#{context.params[:key]}" } })
+    S3Sign.bucket_name = "example-bucket"
     allow(Aws::S3::Client).to receive(:new).with(any_args).and_return(s3)
   end
 
   describe "#s3_signed_url_for_key" do
-    it "calls S3Sign.url with the given key and expires in" do
-      allow(S3Sign).to receive(:url).with("test.txt", hash_including(expires: 86_400)).and_return(:url_one)
-      expect(s3_signed_url_for_key("test.txt")).to eq(:url_one)
+    it "returns a presigned url for the given bucket with the given key" do
+      expect(s3_signed_url_for_key("test.txt")).to start_with("https://example-bucket.s3.us-stubbed-1.amazonaws.com/test.txt")
     end
 
-    it "calls S3Sign.url with the another key and expires in" do
-      allow(S3Sign).to receive(:url).with("test.pdf", hash_including(expires: 3600)).and_return(:url_two)
-      expect(s3_signed_url_for_key("test.pdf", expires: 3600)).to eq(:url_two)
+    it "returns a presigned url with the default expires in" do
+      expect(s3_signed_url_for_key("test.txt")).to include("X-Amz-Expires=86400")
+    end
+
+    it "returns a presigned url with the custom expires" do
+      expect(s3_signed_url_for_key("test.pdf", expires: 3600)).to include("X-Amz-Expires=3600")
     end
   end
 
