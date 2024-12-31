@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "time"
 
 module S3Sign
@@ -39,7 +41,7 @@ module S3Sign
     def stable_s3_signed_url(url, options = {})
       @stable_s3_expire_at ||= Time.parse("2036-1-1 00:00:00 UTC")
 
-      if reference_time = options.delete(:expires)
+      if (reference_time = options.delete(:expires))
         # The time given but in the year 2036
         year       = @stable_s3_expire_at.year
         expires_at = Time.parse(reference_time.utc.strftime("#{year}-%m-%d %T UTC"))

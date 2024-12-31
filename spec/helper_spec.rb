@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 describe S3Sign::Helper do
-  include S3Sign::Helper
+  include described_class
 
   describe "#s3_signed_url_for_key" do
     it "calls S3Sign.url with the given key and expires in" do
@@ -15,12 +17,14 @@ describe S3Sign::Helper do
 
   describe "#stable_s3_signed_url" do
     it "signs with a default far future expires time of 2036-1-1 00:00:00 UTC" do
-      expect(S3Sign).to receive(:url).with("test.txt", hash_including(expires: Time.parse("2036-01-01 00:00:00 UTC"))).and_return(:url)
+      expect(S3Sign).to receive(:url).with("test.txt",
+                                           hash_including(expires: Time.parse("2036-01-01 00:00:00 UTC"))).and_return(:url)
       expect(stable_s3_signed_url("test.txt")).to eq(:url)
     end
 
     it "signs for a given time in 2036 if given a reference time" do
-      expect(S3Sign).to receive(:url).with("test.txt", hash_including(expires: Time.parse("2036-03-24 21:47:30 UTC"))).and_return(:url)
+      expect(S3Sign).to receive(:url).with("test.txt",
+                                           hash_including(expires: Time.parse("2036-03-24 21:47:30 UTC"))).and_return(:url)
       expect(stable_s3_signed_url("test.txt", expires: Time.parse("2015-03-24 21:47:30 UTC"))).to eq(:url)
     end
   end

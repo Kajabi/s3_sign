@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "s3_sign/version"
 require "s3_sign/helper"
 require "aws-sdk-s3"
@@ -7,6 +9,7 @@ module S3Sign
 
   class << self
     attr_writer :bucket_name
+
     def bucket_name
       @bucket_name or raise "No S3Sign.bucket_name is set"
     end
@@ -20,19 +23,15 @@ module S3Sign
     obj.presigned_url(:get, **build_options(options))
   end
 
-  protected
-
   def self.build_options(options)
     { expires_in: options.fetch(:expires, SEVEN_DAYS).to_i }.tap do |o|
       attachment_filename = options[:attachment_filename]
 
-      if attachment_filename
-        o[:response_content_disposition] = "attachment; filename=#{attachment_filename}"
-      end
+      o[:response_content_disposition] = "attachment; filename=#{attachment_filename}" if attachment_filename
     end
   end
 
   def self.path_from_s3_url(s3_url)
-    s3_url.sub(%r{^.+?/#{bucket_name}/}, '')
+    s3_url.sub(%r{^.+?/#{bucket_name}/}, "")
   end
 end
