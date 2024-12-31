@@ -3,7 +3,6 @@
 source "https://rubygems.org"
 
 # development dependencies
-gem "bundler", "~> 2.5"
 gem "nokogiri"
 gem "rake", "~> 13.0"
 gem "rspec", "~> 3.13"
