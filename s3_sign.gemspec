@@ -20,14 +20,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "aws-sdk-s3", "~> 1"
+  spec.required_ruby_version = "~> 3.0"
 
-  spec.add_development_dependency "bundler", "~> 2.5"
-  spec.add_development_dependency "nokogiri"
-  spec.add_development_dependency "rake", "~> 13.0"
-  spec.add_development_dependency "rspec", "~> 3.13"
-  spec.add_development_dependency "rubocop", "~> 1.69"
-  spec.add_development_dependency "rubocop-rake"
-  spec.add_development_dependency "rubocop-rspec"
+  spec.add_dependency "aws-sdk-s3", "~> 1"
   spec.metadata["rubygems_mfa_required"] = "true"
 end
