@@ -8,10 +8,10 @@ module S3Sign
         base.helper_method :s3_signed_url_for_key
       end
 
-      if base.respond_to?(:hide_action)
-        base.hide_action :stable_s3_signed_url
-        base.hide_action :s3_signed_url_for_key
-      end
+      return unless base.respond_to?(:hide_action)
+
+      base.hide_action :stable_s3_signed_url
+      base.hide_action :s3_signed_url_for_key
     end
 
     # A pure "time from now" signed s3 asset url.  Good for non-visual elements
