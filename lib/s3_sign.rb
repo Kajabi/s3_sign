@@ -4,6 +4,8 @@ require "s3_sign/version"
 require "s3_sign/helper"
 require "aws-sdk-s3"
 
+# The S3Sign module provides functionality to generate pre-signed URLs for S3 objects,
+# allowing temporary access to private S3 resources.
 module S3Sign
   SEVEN_DAYS = 60 * 60 * 24 * 7
 

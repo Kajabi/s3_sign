@@ -9,8 +9,11 @@ RuboCop::RakeTask.new do |task|
   task.options = ["--display-cop-names"]
 end
 
+desc "Run the default task (RSpec tests)"
 task default: :spec
 
+desc "Run all RSpec tests"
 task test: :spec
 
+desc "Run Rubocop code analysis"
 task rubocop: :rubocop

@@ -3,6 +3,8 @@
 require "time"
 
 module S3Sign
+  # The S3Sign::Helper module provides two methods for generating S3 signed URLs with different caching strategies,
+  # designed to be included in Rails controllers.
   module Helper
     def self.included(base)
       if base.respond_to?(:helper_method)
