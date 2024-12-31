@@ -4,8 +4,7 @@ require "spec_helper"
 
 describe S3Sign do
   before do
-    Aws.config.update(credentials: Aws::Credentials.new("spec_access_key_id", "spec_secret_access_key"))
-
+    Aws.config.update(credentials: Aws::Credentials.new("spec_access_key_id", "spec_secret_access_key"), region: "us-east-1")
     described_class.bucket_name = "spec_bucket"
   end
 
