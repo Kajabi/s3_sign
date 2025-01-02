@@ -66,3 +66,19 @@ generating signatures that expire in the far future year 2036.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Release
+
+If you are looking to contribute in the gem you need to be aware that we are using the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) specification to release versions in this gem.
+
+which means, when doing a contribution your commit message must have the following structure
+
+```git
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+[here](https://www.conventionalcommits.org/en/v1.0.0/#examples) you can find some commit's examples.
