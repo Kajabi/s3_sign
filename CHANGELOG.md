@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6](https://github.com/Kajabi/s3_sign/compare/v1.0.5...v1.0.6) (2025-01-02)
+
+
+### Miscellaneous
+
+* update readme ([41c621c](https://github.com/Kajabi/s3_sign/commit/41c621c58385648d622dd52e72248b98d0b762f6))
+
 ## [1.0.5](https://github.com/Kajabi/s3_sign/compare/v1.0.4...v1.0.5) (2025-01-02)
 
 
