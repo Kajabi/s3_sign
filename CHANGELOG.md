@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/Kajabi/s3_sign/compare/v1.0.4...v1.0.5) (2025-01-02)
+
+
+### Miscellaneous
+
+* update keys ([d741afc](https://github.com/Kajabi/s3_sign/commit/d741afc5537d8f10b202ca1196e280ac61677fbe))
+
 ## [1.0.4](https://github.com/Kajabi/s3_sign/compare/v1.0.3...v1.0.4) (2025-01-02)
 
 
