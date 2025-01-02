@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/Kajabi/s3_sign/compare/v1.0.2...v1.0.3) (2025-01-02)
+
+
+### Bug Fixes
+
+* add ruby-version for release ([18a4ffe](https://github.com/Kajabi/s3_sign/commit/18a4ffee0c3e410f1834948849cd46d27a7c357b))
+
 ## [1.0.2](https://github.com/Kajabi/s3_sign/compare/v1.0.1...v1.0.2) (2025-01-02)
 
 
