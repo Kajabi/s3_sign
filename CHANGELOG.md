@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/Kajabi/s3_sign/compare/v1.0.1...v1.0.2) (2025-01-02)
+
+
+### Miscellaneous
+
+* automating gem pushes ([87d82f4](https://github.com/Kajabi/s3_sign/commit/87d82f489558527bd3194fd3153c5d514bb39926))
+
 ## [1.0.1](https://github.com/Kajabi/s3_sign/compare/v1.0.0...v1.0.1) (2025-01-02)
 
 
