@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.6](https://github.com/Kajabi/s3_sign/compare/s3_sign-v1.0.5...s3_sign/v1.0.6) (2025-01-02)
+
+
+### Bug Fixes
+
+* add ruby-version for release ([18a4ffe](https://github.com/Kajabi/s3_sign/commit/18a4ffee0c3e410f1834948849cd46d27a7c357b))
+* revert to v3 of release ([4711d9c](https://github.com/Kajabi/s3_sign/commit/4711d9c46c66a802d322b6e1e29c7247d88b895a))
+
+
+### Reverts
+
+* change to googleapi gha ([ff56199](https://github.com/Kajabi/s3_sign/commit/ff5619933a2a454543c1dba95bb42daa51053882))
+
 ## [1.0.6](https://github.com/Kajabi/s3_sign/compare/v1.0.5...v1.0.6) (2025-01-02)
 
 
