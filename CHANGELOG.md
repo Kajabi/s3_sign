@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.1](https://github.com/Kajabi/s3_sign/compare/v1.0.0...v1.0.1) (2025-01-02)
+
+
+### Bug Fixes
+
+* revert to v3 of release ([4711d9c](https://github.com/Kajabi/s3_sign/commit/4711d9c46c66a802d322b6e1e29c7247d88b895a))
+
+
+### Miscellaneous
+
+* add changelog ([a1a93f5](https://github.com/Kajabi/s3_sign/commit/a1a93f52901863ef22cb78ce63dad588ca28956d))
+* add release support ([c901fca](https://github.com/Kajabi/s3_sign/commit/c901fca3d02f16b734ee32f9476e4957c1313a92))
+* change token to a PAT from the service account ([4243835](https://github.com/Kajabi/s3_sign/commit/42438352ecb86fcf83425eb55f8a6dcff810b7ed))
+
 ## [Unreleased](https://github.com/Kajabi/s3_sign/tree/HEAD)
 
 [Full Changelog](https://github.com/Kajabi/s3_sign/compare/v1.0.0...HEAD)
