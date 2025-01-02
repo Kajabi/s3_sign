@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 require "time"
 
 module S3Sign
+  # The S3Sign::Helper module provides two methods for generating S3 signed URLs with different caching strategies,
+  # designed to be included in Rails controllers.
   module Helper
     def self.included(base)
       if base.respond_to?(:helper_method)
@@ -8,10 +12,10 @@ module S3Sign
         base.helper_method :s3_signed_url_for_key
       end
 
-      if base.respond_to?(:hide_action)
-        base.hide_action :stable_s3_signed_url
-        base.hide_action :s3_signed_url_for_key
-      end
+      return unless base.respond_to?(:hide_action)
+
+      base.hide_action :stable_s3_signed_url
+      base.hide_action :s3_signed_url_for_key
     end
 
     # A pure "time from now" signed s3 asset url.  Good for non-visual elements
@@ -39,7 +43,7 @@ module S3Sign
     def stable_s3_signed_url(url, options = {})
       @stable_s3_expire_at ||= Time.parse("2036-1-1 00:00:00 UTC")
 
-      if reference_time = options.delete(:expires)
+      if (reference_time = options.delete(:expires))
         # The time given but in the year 2036
         year       = @stable_s3_expire_at.year
         expires_at = Time.parse(reference_time.utc.strftime("#{year}-%m-%d %T UTC"))
