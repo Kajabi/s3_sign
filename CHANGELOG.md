@@ -5,6 +5,16 @@
 
 ### Miscellaneous
 
+* **main:** release 1.0.6 ([326c54c](https://github.com/Kajabi/s3_sign/commit/326c54c8f92d629c7ea49f19b57c018bbda0f26c))
+* **main:** release 1.0.6 ([ae3db7a](https://github.com/Kajabi/s3_sign/commit/ae3db7acdf25545862d20940e88c2225c5b8959f))
+* update readme ([41c621c](https://github.com/Kajabi/s3_sign/commit/41c621c58385648d622dd52e72248b98d0b762f6))
+* update workflow gha for release-please ([998fde1](https://github.com/Kajabi/s3_sign/commit/998fde1c5a0b90405514c760690cefaa33e0a34f))
+
+## [1.0.6](https://github.com/Kajabi/s3_sign/compare/v1.0.5...v1.0.6) (2025-01-02)
+
+
+### Miscellaneous
+
 * **main:** release 1.0.6 ([ae3db7a](https://github.com/Kajabi/s3_sign/commit/ae3db7acdf25545862d20940e88c2225c5b8959f))
 * update readme ([41c621c](https://github.com/Kajabi/s3_sign/commit/41c621c58385648d622dd52e72248b98d0b762f6))
 * update workflow gha for release-please ([998fde1](https://github.com/Kajabi/s3_sign/commit/998fde1c5a0b90405514c760690cefaa33e0a34f))
