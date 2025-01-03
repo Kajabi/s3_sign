@@ -6,49 +6,11 @@
 ### Bug Fixes
 
 * add ruby-version for release ([18a4ffe](https://github.com/Kajabi/s3_sign/commit/18a4ffee0c3e410f1834948849cd46d27a7c357b))
-* revert to v3 of release ([4711d9c](https://github.com/Kajabi/s3_sign/commit/4711d9c46c66a802d322b6e1e29c7247d88b895a))
-
-
-### Reverts
-
-* change to googleapi gha ([ff56199](https://github.com/Kajabi/s3_sign/commit/ff5619933a2a454543c1dba95bb42daa51053882))
-
-## [1.0.6](https://github.com/Kajabi/s3_sign/compare/v1.0.5...v1.0.6) (2025-01-02)
-
 
 ### Miscellaneous
 
-* **main:** release 1.0.6 ([5f07c43](https://github.com/Kajabi/s3_sign/commit/5f07c43ba79a7e7e2505b576af5b94031e109633))
-* **main:** release 1.0.6 ([326c54c](https://github.com/Kajabi/s3_sign/commit/326c54c8f92d629c7ea49f19b57c018bbda0f26c))
-* **main:** release 1.0.6 ([ae3db7a](https://github.com/Kajabi/s3_sign/commit/ae3db7acdf25545862d20940e88c2225c5b8959f))
 * update readme ([41c621c](https://github.com/Kajabi/s3_sign/commit/41c621c58385648d622dd52e72248b98d0b762f6))
 * update workflow gha for release-please ([998fde1](https://github.com/Kajabi/s3_sign/commit/998fde1c5a0b90405514c760690cefaa33e0a34f))
-
-## [1.0.6](https://github.com/Kajabi/s3_sign/compare/v1.0.5...v1.0.6) (2025-01-02)
-
-
-### Miscellaneous
-
-* **main:** release 1.0.6 ([326c54c](https://github.com/Kajabi/s3_sign/commit/326c54c8f92d629c7ea49f19b57c018bbda0f26c))
-* **main:** release 1.0.6 ([ae3db7a](https://github.com/Kajabi/s3_sign/commit/ae3db7acdf25545862d20940e88c2225c5b8959f))
-* update readme ([41c621c](https://github.com/Kajabi/s3_sign/commit/41c621c58385648d622dd52e72248b98d0b762f6))
-* update workflow gha for release-please ([998fde1](https://github.com/Kajabi/s3_sign/commit/998fde1c5a0b90405514c760690cefaa33e0a34f))
-
-## [1.0.6](https://github.com/Kajabi/s3_sign/compare/v1.0.5...v1.0.6) (2025-01-02)
-
-
-### Miscellaneous
-
-* **main:** release 1.0.6 ([ae3db7a](https://github.com/Kajabi/s3_sign/commit/ae3db7acdf25545862d20940e88c2225c5b8959f))
-* update readme ([41c621c](https://github.com/Kajabi/s3_sign/commit/41c621c58385648d622dd52e72248b98d0b762f6))
-* update workflow gha for release-please ([998fde1](https://github.com/Kajabi/s3_sign/commit/998fde1c5a0b90405514c760690cefaa33e0a34f))
-
-## [1.0.6](https://github.com/Kajabi/s3_sign/compare/v1.0.5...v1.0.6) (2025-01-02)
-
-
-### Miscellaneous
-
-* update readme ([41c621c](https://github.com/Kajabi/s3_sign/commit/41c621c58385648d622dd52e72248b98d0b762f6))
 
 ## [1.0.5](https://github.com/Kajabi/s3_sign/compare/v1.0.4...v1.0.5) (2025-01-02)
 
